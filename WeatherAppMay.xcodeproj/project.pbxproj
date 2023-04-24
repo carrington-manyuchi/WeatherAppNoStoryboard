@@ -20,6 +20,8 @@
 		23D1C8D429F6C2A000DF9B3B /* Daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1C8D329F6C2A000DF9B3B /* Daily.swift */; };
 		23D1C8D629F6C2D300DF9B3B /* Temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1C8D529F6C2D300DF9B3B /* Temp.swift */; };
 		23D1C8DA29F6FB6300DF9B3B /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1C8D929F6FB6300DF9B3B /* WeatherTableViewCell.swift */; };
+		23D1C8DF29F7149500DF9B3B /* WeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1C8DE29F7149500DF9B3B /* WeatherCollectionViewCell.swift */; };
+		23D1C8E129F7167400DF9B3B /* HourlyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1C8E029F7167400DF9B3B /* HourlyTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		23D1C8D329F6C2A000DF9B3B /* Daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daily.swift; sourceTree = "<group>"; };
 		23D1C8D529F6C2D300DF9B3B /* Temp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temp.swift; sourceTree = "<group>"; };
 		23D1C8D929F6FB6300DF9B3B /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
+		23D1C8DE29F7149500DF9B3B /* WeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCollectionViewCell.swift; sourceTree = "<group>"; };
+		23D1C8E029F7167400DF9B3B /* HourlyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 		23D1C8AA29F6895900DF9B3B = {
 			isa = PBXGroup;
 			children = (
+				23D1C8D929F6FB6300DF9B3B /* WeatherTableViewCell.swift */,
 				23D1C8B529F6895900DF9B3B /* WeatherAppMay */,
 				23D1C8B429F6895900DF9B3B /* Products */,
 			);
@@ -99,7 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				23D1C8CA29F693FA00DF9B3B /* CustomTableViewCell.swift */,
-				23D1C8D929F6FB6300DF9B3B /* WeatherTableViewCell.swift */,
+				23D1C8E029F7167400DF9B3B /* HourlyTableViewCell.swift */,
+				23D1C8DE29F7149500DF9B3B /* WeatherCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -184,6 +190,7 @@
 			files = (
 				23D1C8DA29F6FB6300DF9B3B /* WeatherTableViewCell.swift in Sources */,
 				23D1C8BB29F6895900DF9B3B /* ViewController.swift in Sources */,
+				23D1C8DF29F7149500DF9B3B /* WeatherCollectionViewCell.swift in Sources */,
 				23D1C8D429F6C2A000DF9B3B /* Daily.swift in Sources */,
 				23D1C8D629F6C2D300DF9B3B /* Temp.swift in Sources */,
 				23D1C8B729F6895900DF9B3B /* AppDelegate.swift in Sources */,
@@ -191,6 +198,7 @@
 				23D1C8CB29F693FA00DF9B3B /* CustomTableViewCell.swift in Sources */,
 				23D1C8D029F6C1C500DF9B3B /* Current.swift in Sources */,
 				23D1C8B929F6895900DF9B3B /* SceneDelegate.swift in Sources */,
+				23D1C8E129F7167400DF9B3B /* HourlyTableViewCell.swift in Sources */,
 				23D1C8CE29F6C17B00DF9B3B /* Weather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
