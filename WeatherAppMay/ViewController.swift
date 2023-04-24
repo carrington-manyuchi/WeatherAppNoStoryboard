@@ -3,7 +3,18 @@
 //  WeatherAppMay
 //
 //  Created by Carrington Tafadzwa Manyuchi on 2023/04/24.
-//
+//****
+//****
+//**************************************************
+// *** List of things we gonna need in this project ****
+// 1. Location - to get us to know users area
+// 2. TableView - To show the weather list of the upcoming days
+// 3. Custom cell: Collection View - Horizontal table which shows the hourly forecast of the current day
+// 4. API / Request to get the data
+// 5. Get locations first, then find weather using location coordinates
+//****
+//****
+//**************************************************
 
 import UIKit
 import CoreLocation
@@ -12,6 +23,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation?
+    
+    
+    var hourly = [Current]()
+    var models = [Daily]()
+    var current: Current?
+    
     
     private let locationLabel: UILabel = {
         let location = UILabel()
@@ -100,23 +117,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 return
             }
             
-//            let entries = result.daily
-//            self.models.append(contentsOf: entries)
-//
-//
-//            let current = result.current
-//            self.current = current
-//
-//            let  hours = result.hourly
-//            self.hourly = hours
+            let entries = result.daily
+            self.models.append(contentsOf: entries)
+
+            let current = result.current
+            self.current = current
+
+            let  hours = result.hourly
+            self.hourly = hours
             
-           // print(result.hourly)
-            // update user interface
+            print(result.hourly)
+           // update user interface
 
             DispatchQueue.main.async {
-//                self.table.reloadData()
-//
-//                self.table.tableHeaderView = self.createTableHeader()
+                self.tableView.reloadData()
+
+                self.tableView.tableHeaderView = self.createTableHeader()
             }
             // update user interface
         }
@@ -140,14 +156,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationLabel.textAlignment = .center
         
         
-//        guard let currentWeather = self.current else {
-//            return UIView()
-//        }
+        guard let currentWeather = self.current else {
+            return UIView()
+        }
         
-//        summaryLabel.text = "\(currentWeather.weather[0].main)"
-//        locationLabel.text = getDayForDate(Date(timeIntervalSince1970: Double(currentWeather.dt)))
-//        tempLabel.text = "\(currentWeather.temp)°"
-//        tempLabel.font = UIFont(name: "Helvetica-Bold", size: 32)
+        summaryLabel.text = "\(currentWeather.weather[0].main)"
+        locationLabel.text = getDayForDate(Date(timeIntervalSince1970: Double(currentWeather.dt)))
+        tempLabel.text = "\(currentWeather.temp)°"
+        tempLabel.font = UIFont(name: "Helvetica-Bold", size: 32)
         
         func getDayForDate(_ date: Date?) -> String {
             guard let inputDate = date else {
@@ -165,12 +181,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 25
+        return models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath)
-        //cell.textLabel?.text = "Carrington Manyuchi"
+        let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as! CustomTableViewCell
+        cell.configure(with: models[indexPath.row])
         return cell
     }
     
