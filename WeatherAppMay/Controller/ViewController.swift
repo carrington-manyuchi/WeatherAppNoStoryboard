@@ -139,13 +139,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         dataTask.resume()
     }
     func createTableHeader() -> UIView {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
+        
+        
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: (view.frame.size.height)/1.7))
         headerView.backgroundColor = .cyan
         
-        let locationLabel = UILabel(frame: CGRect(x: 10, y: 10, width: view.frame.size.width-20, height: headerView.frame.size.height/5))
-        let summaryLabel = UILabel(frame: CGRect(x: 10, y: 20+locationLabel.frame.size.height, width: view.frame.size.width-20, height: headerView.frame.size.height/5))
+        
+        let locationLabelSize = locationLabel.sizeThatFits(view.frame.size)
+        
+       // let tempLabelSize = tempLabel.sizeThatFits(view.frame.size)
+        
+        let locationLabel = UILabel(frame: CGRect(x: 10, y: (view.frame.size.height-locationLabelSize.height)/3, width: view.frame.size.width-20, height: headerView.frame.size.height/5))
+        let summaryLabel = UILabel(frame: CGRect(x: 10, y: (20+locationLabel.frame.size.height)/4, width: view.frame.size.width-20, height: headerView.frame.size.height/5))
        
-        let tempLabel = UILabel(frame: CGRect(x: 10, y: 10+locationLabel.frame.size.height+summaryLabel.frame.size.height, width: view.frame.size.width-20, height: headerView.frame.size.height/2))
+        let tempLabel = UILabel(frame: CGRect(x: 10, y: (10+locationLabel.frame.size.height+summaryLabel.frame.size.height)-50, width: view.frame.size.width-20, height: headerView.frame.size.height/12))
         
         headerView.addSubview(locationLabel)
         headerView.addSubview(summaryLabel)
@@ -161,7 +168,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         summaryLabel.text = "\(currentWeather.weather[0].main)"
+        summaryLabel.font = UIFont(name: "Helvetica-Bold", size: 20)
         locationLabel.text = getDayForDate(Date(timeIntervalSince1970: Double(currentWeather.dt)))
+        locationLabel.font = UIFont(name: "Helvetica-Bold", size: 20)
         tempLabel.text = "\(currentWeather.temp)°"
         tempLabel.font = UIFont(name: "Helvetica-Bold", size: 32)
         

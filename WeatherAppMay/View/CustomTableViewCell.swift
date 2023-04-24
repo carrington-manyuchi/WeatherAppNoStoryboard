@@ -74,7 +74,7 @@ class CustomTableViewCell: UITableViewCell {
         
         lowTempLabel.frame = CGRect(x: 45+dayLabel.frame.size.width+myImageView.frame.size.width, y: (contentView.frame.size.height-lowTempLabelSize.height)/2, width: lowTempLabelSize.width, height: lowTempLabelSize.height)
         
-        highTempLabel.frame = CGRect(x: 60+dayLabel.frame.size.width+myImageView.frame.size.width+lowTempLabel.frame.size.width, y: (contentView.frame.size.height-highTempLabelSize.height)/2, width: contentView.frame.size.width-10-dayLabel.frame.size.width-imageSize, height: highTempLabelSize.height)
+        highTempLabel.frame = CGRect(x: 30+dayLabel.frame.size.width+myImageView.frame.size.width+lowTempLabel.frame.size.width, y: (contentView.frame.size.height-highTempLabelSize.height)/2, width: contentView.frame.size.width-45-dayLabel.frame.size.width-imageSize, height: highTempLabelSize.height)
         
         
     }
@@ -88,7 +88,7 @@ class CustomTableViewCell: UITableViewCell {
         self.lowTempLabel.text = "\(Int(model.temp.min))°"
         self.highTempLabel.text = "\(Int(model.temp.max))°"
         self.dayLabel.text =  getDayForDate(Date(timeIntervalSince1970: Double(model.dt)))
-        self.imageView!.image = UIImage(named: "")
+        self.imageView!.image = UIImage(named: "cloud")
         self.imageView!.contentMode = .scaleAspectFit
  
     }
