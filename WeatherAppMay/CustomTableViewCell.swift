@@ -16,7 +16,7 @@ class CustomTableViewCell: UITableViewCell {
     private let dayLabel: UILabel = {
         let dayLabel = UILabel()
          dayLabel.textColor = .white
-         dayLabel.font = .systemFont(ofSize: 17, weight: .bold)
+         dayLabel.font = .systemFont(ofSize: 20, weight: .bold)
          dayLabel.text = "Day Label"
         return dayLabel
     }()
@@ -33,7 +33,7 @@ class CustomTableViewCell: UITableViewCell {
     private let lowTempLabel: UILabel = {
         let lowTempLabel = UILabel()
         lowTempLabel.textColor = .white
-        lowTempLabel.font = .systemFont(ofSize: 17, weight: .bold)
+        lowTempLabel.font = .systemFont(ofSize: 23, weight: .bold)
         lowTempLabel.text = "7.5°"
         return lowTempLabel
     }()
@@ -41,7 +41,7 @@ class CustomTableViewCell: UITableViewCell {
     private let highTempLabel: UILabel = {
         let highTempLabel = UILabel()
         highTempLabel.textColor = .white
-        highTempLabel.font = .systemFont(ofSize: 17, weight: .bold)
+        highTempLabel.font = .systemFont(ofSize: 23, weight: .bold)
         highTempLabel.text = "29.5°"
         return highTempLabel
     }()
@@ -52,6 +52,7 @@ class CustomTableViewCell: UITableViewCell {
         contentView.addSubview(dayLabel)
         contentView.addSubview(myImageView)
         contentView.addSubview(lowTempLabel)
+        contentView.addSubview(highTempLabel)
     }
     
     required init?(coder: NSCoder) {
@@ -63,13 +64,17 @@ class CustomTableViewCell: UITableViewCell {
         
         let imageSize = contentView.frame.size.height-6
         let dayLabelSize = dayLabel.sizeThatFits(contentView.frame.size)
+        let lowTempLabelSize = lowTempLabel.sizeThatFits(contentView.frame.size)
+        let highTempLabelSize = highTempLabel.sizeThatFits(contentView.frame.size)
         
         dayLabel.frame = CGRect(x: 15 , y: (contentView.frame.size.height-dayLabelSize.height)/2, width: dayLabelSize.width, height: dayLabelSize.height)
         
-        myImageView.frame = CGRect(x: 25+dayLabel.frame.size.width, y: 3, width: imageSize, height: imageSize)
+        myImageView.frame = CGRect(x: 30+dayLabel.frame.size.width, y: 3, width: imageSize, height: imageSize)
         
         
-        lowTempLabel.frame = CGRect(x: 35+dayLabel.frame.size.width+myImageView.frame.size.width, y: 3, width: contentView.frame.size.width-10-dayLabel.frame.size.width-imageSize, height: contentView.frame.size.height)
+        lowTempLabel.frame = CGRect(x: 45+dayLabel.frame.size.width+myImageView.frame.size.width, y: (contentView.frame.size.height-lowTempLabelSize.height)/2, width: lowTempLabelSize.width, height: lowTempLabelSize.height)
+        
+        highTempLabel.frame = CGRect(x: 60+dayLabel.frame.size.width+myImageView.frame.size.width+lowTempLabel.frame.size.width, y: (contentView.frame.size.height-highTempLabelSize.height)/2, width: contentView.frame.size.width-10-dayLabel.frame.size.width-imageSize, height: highTempLabelSize.height)
         
         
 //        myImageView.frame = CGRect(x: 2+dayLabel.frame.size.width, y: 3, width: contentView.frame.size.width-10-dayLabel.frame.size.width-imageSize, height: contentView.frame.size.height)
