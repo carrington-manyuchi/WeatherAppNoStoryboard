@@ -38,7 +38,7 @@ class WeatherCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        iconImageView.frame = CGRect(x: 5, y: 5, width: contentView.frame.size.width, height: contentView.frame.size
+        iconImageView.frame = CGRect(x: 5, y: 5, width: (contentView.frame.size.width)/2, height: contentView.frame.size
                                         .height)
         tempLabel.frame = CGRect(x: 5, y: 10, width: contentView.frame.size.width, height: contentView.frame.size.height)
     }
