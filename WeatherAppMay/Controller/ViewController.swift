@@ -39,15 +39,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }()
     
     private let tableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.identifier)
+        tableView.register(HourlyTableViewCell.self, forCellReuseIdentifier: HourlyTableViewCell.identifier)
         return tableView
-    }()
-    
-    private let collectionView: UITableView = {
-        let collectionView = UITableView()
-        collectionView.register(HourlyTableViewCell.self, forCellReuseIdentifier: HourlyTableViewCell.identifier)
-        return collectionView
+
     }()
     
 
@@ -56,7 +52,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-       
+
         view.addSubview(tableView)
     }
     
@@ -216,7 +212,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
         if indexPath.section == 0 {
             // Continue
-            let cell = collectionView.dequeueReusableCell(withIdentifier: HourlyTableViewCell.identifier, for: indexPath) as! HourlyTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: HourlyTableViewCell.identifier, for: indexPath) as! HourlyTableViewCell
             cell.configure(with: hourly)
             return cell
         }

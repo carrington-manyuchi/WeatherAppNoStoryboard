@@ -7,18 +7,49 @@
 
 import UIKit
 
-class HourlyTableViewCell: UICollectionViewCell {
+class HourlyTableViewCell: UITableViewCell {
+    
+    static let identifier = "HourlyTableViewCell"
     
     var hourly = [Current]()
     
     
-    private let collectionView: UICollectionView = {
-        let collectionView = UICollectionView()
-        collectionView.register(WeatherCollectionViewCell.self, forCellWithReuseIdentifier: WeatherCollectionViewCell.identifier)
-        return collectionView
-    }()
+//    private let collectionView: UICollectionView = {
+//        let collectionView = UICollectionView()
+//        override init(style:)
+//
+//        collectionView.register(WeatherCollectionViewCell.self, forCellWithReuseIdentifier: WeatherCollectionViewCell.identifier)
+//        return collectionView
+//    }()
     
-    static let identifier = "HourlyTableViewCell"
+    private let collectionView: UICollectionView
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        let layout =  UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 170, height: 170)
+        layout.sectionInset = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
+        self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        
+        collectionView.register(WeatherCollectionViewCell.self, forCellWithReuseIdentifier: WeatherCollectionViewCell.identifier)
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        contentView.addSubview(collectionView)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+   
+    
+    
+    
     
     func configure(with models: [Current]){
         self.hourly = models
