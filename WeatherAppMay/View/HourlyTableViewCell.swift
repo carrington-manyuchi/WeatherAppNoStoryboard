@@ -24,6 +24,8 @@ class HourlyTableViewCell: UICollectionViewCell {
         self.hourly = models
         collectionView.reloadData()
     }
+    
+ 
 }
 
 

@@ -26,6 +26,23 @@ class WeatherCollectionViewCell: UICollectionViewCell {
         return tempLabel
     }()
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        contentView.addSubview(tempLabel)
+        contentView.addSubview(iconImageView)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        iconImageView.frame = CGRect(x: 5, y: 5, width: contentView.frame.size.width, height: contentView.frame.size
+                                        .height)
+        tempLabel.frame = CGRect(x: 5, y: 10, width: contentView.frame.size.width, height: contentView.frame.size.height)
+    }
+    
     func configure(with model: Current) {
         self.tempLabel.text = "\(model.temp)"
         self.iconImageView.contentMode = .scaleAspectFit

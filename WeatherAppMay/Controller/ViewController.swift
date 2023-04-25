@@ -43,6 +43,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.identifier)
         return tableView
     }()
+    
+    private let collectionView: UITableView = {
+        let collectionView = UITableView()
+        collectionView.register(HourlyTableViewCell.self, forCellReuseIdentifier: HourlyTableViewCell.identifier)
+        return collectionView
+    }()
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -188,12 +196,31 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
 }
 
+//MARK: - Basic Table Functionality
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            
+            // 1 cell that is a collectiontableviewcell
+            return 1
+        }
         return models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.section == 0 {
+            // Continue
+            let cell = collectionView.dequeueReusableCell(withIdentifier: HourlyTableViewCell.identifier, for: indexPath) as! HourlyTableViewCell
+            cell.configure(with: hourly)
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as! CustomTableViewCell
         cell.configure(with: models[indexPath.row])
         return cell
